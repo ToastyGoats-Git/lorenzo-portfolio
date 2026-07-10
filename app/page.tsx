@@ -10,7 +10,9 @@ export default function Home() {
     <div className="min-h-screen bg-[#151b1f] text-white font-sans">
       {/* Navbar */}
       <nav className="flex items-center justify-between px-16 py-8">
-        <span className="text-xl font-bold tracking-wide">PORTFOLIO.</span>
+        <a href="/" className="text-xl font-bold tracking-wide">
+          PORTFOLIO.
+        </a>
 
         <div className="flex gap-10 text-sm font-semibold tracking-wide">
           <a href="#projects" className="hover:text-[#92a7b5]">
