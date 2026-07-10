@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,45 +7,12 @@ export default function Home() {
   const [showAbout, setShowAbout] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#151b1f] text-white font-sans">
-      {/* Navbar */}
-      <nav className="flex items-center justify-between px-16 py-8">
-        <Link
-          href="/"
-          className="text-xl font-bold tracking-wide hover:text-[#92a7b5] transition-colors duration-300"
-        >
-          PORTFOLIO.
-        </Link>
-
-        <div className="flex gap-10 text-sm font-semibold tracking-wide">
-          <Link
-            href="/projects"
-            className="hover:text-[#92a7b5] transition-colors duration-300"
-          >
-            PROJECTS
-          </Link>
-
-          <Link
-            href="/practicum"
-            className="hover:text-[#92a7b5] transition-colors duration-300"
-          >
-            PRACTICUM
-          </Link>
-
-          <Link
-            href="/contact"
-            className="hover:text-[#92a7b5] transition-colors duration-300"
-          >
-            CONTACT
-          </Link>
-        </div>
-      </nav>
-
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <main className="flex items-center justify-between px-16 py-20 max-w-6xl mx-auto">
+      <main className="max-w-6xl mx-auto px-8 md:px-16 py-20 flex items-center justify-between">
         {/* Placeholder for photo */}
         <div className="w-72 h-96 bg-zinc-700 rounded-lg flex items-center justify-center text-zinc-400">
-          Your Photo Here
+          Photo
         </div>
 
         {/* Intro Text */}

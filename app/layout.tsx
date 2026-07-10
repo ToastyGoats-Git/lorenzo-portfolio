@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Lorenzo Okol | Portfolio",
-  description: "Portfolion of Lorenzo Okol, an Information Technology student.",
+  description:
+    "Portfolio of Lorenzo Okol, an Information Technology student.",
 };
 
 export default function RootLayout({
@@ -27,7 +29,32 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col font-sans bg-[#151b1f] text-white">
+        <nav className="bg-[#151b1f] shadow-md">
+          <div className="max-w-6xl mx-auto flex items-center justify-between px-8 md:px-16 py-6">
+            <Link
+              href="/"
+              className="text-xl font-bold tracking-wide hover:text-[#92a7b5] transition-colors duration-300"
+            >
+              PORTFOLIO.
+            </Link>
+
+            <div className="flex gap-10 text-sm font-semibold tracking-wide">
+              <Link href="/projects" className="hover:text-[#92a7b5] transition-colors duration-300">
+                PROJECTS
+              </Link>
+              <Link href="/practicum" className="hover:text-[#92a7b5] transition-colors duration-300">
+                PRACTICUM
+              </Link>
+              <Link href="/contact" className="hover:text-[#92a7b5] transition-colors duration-300">
+                CONTACT
+              </Link>
+            </div>
+          </div>
+        </nav>
+
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
