@@ -1,10 +1,19 @@
 export default function Practicum() {
   return (
-    <div className="min-h-screen bg-[#151b1f] text-white font-sans px-16 py-20">
-      <h1 className="text-4xl font-bold mb-8">PRACTICUM</h1>
-      <p className="text-zinc-300">
-        Under Construction :D
-      </p>
+    <div className="min-h-screen px-16 py-20 text-center">
+      <h1 className="text-4xl font-bold mb-4">
+        INTERNSHIP AT KOOAPPS PHILIPPINES CORPORATION
+      </h1>
+
+      <div className="w-48 h-px bg-white/40 mx-auto mb-8"></div>
+
+      <a
+        href="/Final Report Practicum - Okol.pdf"
+        download
+        className="inline-block bg-[#3d4e59] hover:bg-[#92a7b5] text-white px-6 py-3 rounded-md font-medium transition-colors duration-300"
+      >
+        Download Full Report
+      </a>
     </div>
   );
 }
