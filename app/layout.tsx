@@ -30,8 +30,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col font-sans bg-[#151b1f] text-white">
-        <nav className="bg-[#151b1f] shadow-md">
-          <div className="max-w-6xl mx-auto flex items-center justify-between px-8 md:px-16 py-6">
+        <nav className="bg-[#1f262b] shadow-md">
+          <div className="flex items-center justify-between px-8 md:px-16 py-6">
             <Link
               href="/"
               className="text-xl font-bold tracking-wide hover:text-[#92a7b5] transition-colors duration-300"
