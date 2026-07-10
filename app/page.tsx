@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,20 +11,34 @@ export default function Home() {
     <div className="min-h-screen bg-[#151b1f] text-white font-sans">
       {/* Navbar */}
       <nav className="flex items-center justify-between px-16 py-8">
-        <a href="/" className="text-xl font-bold tracking-wide">
+        <Link
+          href="/"
+          className="text-xl font-bold tracking-wide hover:text-[#92a7b5] transition-colors duration-300"
+        >
           PORTFOLIO.
-        </a>
+        </Link>
 
         <div className="flex gap-10 text-sm font-semibold tracking-wide">
-          <a href="#projects" className="hover:text-[#92a7b5]">
+          <Link
+            href="/projects"
+            className="hover:text-[#92a7b5] transition-colors duration-300"
+          >
             PROJECTS
-          </a>
-          <a href="#practicum" className="hover:text-[#92a7b5]">
+          </Link>
+
+          <Link
+            href="/practicum"
+            className="hover:text-[#92a7b5] transition-colors duration-300"
+          >
             PRACTICUM
-          </a>
-          <a href="#contact" className="hover:text-[#92a7b5]">
+          </Link>
+
+          <Link
+            href="/contact"
+            className="hover:text-[#92a7b5] transition-colors duration-300"
+          >
             CONTACT
-          </a>
+          </Link>
         </div>
       </nav>
 
@@ -97,14 +112,13 @@ export default function Home() {
               <div className="w-24 h-1 bg-[#92a7b5] mx-auto mb-6"></div>
 
               <p className="text-zinc-300 leading-relaxed mb-8 text-center">
-                Hello! I'm Lorenzo Okol, a student currently pursuing a
-                degree in Information Technology at
-                Mapúa Malayan Colleges Laguna. I have hands-on experience
-                across C#, HTML, CSS, JavaScript, Kotlin, and MySQL, with a
-                strong foundation built through academic projects like
-                PlanterAid, a sensor-integrated farm monitoring dashboard,
-                and Arithmetic Arena, an RPG-style Android quiz game.
-                I'm motivated to grow as a well-rounded developer and
+                Hello! I'm Lorenzo Okol, a student currently pursuing a degree
+                in Information Technology at Mapúa Malayan Colleges Laguna. I
+                have hands-on experience across C#, HTML, CSS, JavaScript,
+                Kotlin, and MySQL, with a strong foundation built through
+                academic projects like PlanterAid, a sensor-integrated farm
+                monitoring dashboard, and Arithmetic Arena, an RPG-style Android
+                quiz game. I'm motivated to grow as a well-rounded developer and
                 contribute to real-world software teams.
               </p>
 
