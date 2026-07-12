@@ -23,29 +23,29 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <main className="max-w-6xl mx-auto px-6 sm:px-8 md:px-16 py-12 sm:py-20 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
+      <main className="max-w-6xl mx-auto px-8 md:px-16 py-20 flex items-center justify-between">
         {/* Placeholder for photo */}
         <motion.div
           initial="hidden"
           animate="visible"
           custom={0.6}
           variants={fadeUp}
-          className="w-56 h-72 sm:w-72 sm:h-96 bg-zinc-700 rounded-lg flex items-center justify-center text-zinc-400 order-2 md:order-1"
+          className="w-72 h-96 bg-zinc-700 rounded-lg flex items-center justify-center text-zinc-400"
         >
           Photo
         </motion.div>
 
         {/* Intro Text */}
-        <div className="flex flex-col gap-4 max-w-md text-center md:text-left items-center md:items-start order-1 md:order-2">
+        <div className="flex flex-col gap-4 max-w-md">
           <motion.h1
             initial="hidden"
             animate="visible"
             custom={0}
             variants={fadeUp}
-            className="text-3xl sm:text-4xl font-bold"
+            className="text-4xl font-bold"
           >
-            HELLO WORLD! I'M LORENZO!{" "}
-            <Rocket size={28} className="inline text-[#92a7b5] -mt-1" />
+            HELLO WORLD! I&apos;M LORENZO!{" "}
+            <Rocket size={32} className="inline text-[#92a7b5] -mt-1" />
           </motion.h1>
 
           <motion.p
@@ -53,7 +53,7 @@ export default function Home() {
             animate="visible"
             custom={0.15}
             variants={fadeUp}
-            className="text-lg sm:text-xl text-zinc-300"
+            className="text-xl text-zinc-300"
           >
             Information Technology Student
           </motion.p>
@@ -63,7 +63,7 @@ export default function Home() {
             animate="visible"
             custom={0.3}
             variants={fadeUp}
-            className="flex flex-wrap justify-center md:justify-start gap-4 mt-4"
+            className="flex gap-4 mt-4"
           >
             <a
               href="/Resume-Okol_Lorenzo_T.pdf"
@@ -89,14 +89,14 @@ export default function Home() {
       <AnimatePresence>
         {showAbout && (
           <motion.div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4"
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
             <motion.div
-              className="bg-[#1f262b] text-white rounded-lg max-w-lg w-full p-6 sm:p-10 relative max-h-[85vh] overflow-y-auto"
+              className="bg-[#1f262b] text-white rounded-lg max-w-lg w-full mx-4 p-10 relative max-h-[85vh] overflow-y-auto"
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -112,30 +112,30 @@ export default function Home() {
                 <X size={22} />
               </button>
 
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center">
+              <h2 className="text-3xl font-bold mb-2 text-center">
                 ABOUT ME
               </h2>
 
               <div className="w-24 h-1 bg-[#92a7b5] mx-auto mb-6"></div>
 
-              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed mb-8 text-center">
-                Hello! I'm Lorenzo Okol, a student currently pursuing a degree
-                in Information Technology at Mapúa Malayan Colleges Laguna. I
-                have hands-on experience across C#, HTML, CSS, JavaScript,
-                Kotlin, and MySQL, with a strong foundation built through
-                academic projects like PlanterAid, a sensor-integrated farm
-                monitoring dashboard, and Arithmetic Arena, an RPG-style Android
-                quiz game. I'm motivated to grow as a well-rounded developer and
-                contribute to real-world software teams.
+              <p className="text-zinc-300 leading-relaxed mb-8 text-center">
+                Hello! I&apos;m Lorenzo Okol, a student currently pursuing a
+                degree in Information Technology at Mapúa Malayan Colleges
+                Laguna. I have hands-on experience across C#, HTML, CSS,
+                JavaScript, Kotlin, and MySQL, with a strong foundation built
+                through academic projects like PlanterAid, a sensor-integrated
+                farm monitoring dashboard, and Arithmetic Arena, an RPG-style
+                Android quiz game. I&apos;m motivated to grow as a well-rounded
+                developer and contribute to real-world software teams.
               </p>
 
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center">
+              <h2 className="text-3xl font-bold mb-2 text-center">
                 SKILLS
               </h2>
 
               <div className="w-24 h-1 bg-[#92a7b5] mx-auto mb-6"></div>
 
-              <div className="text-sm sm:text-base text-zinc-300 text-center space-y-2">
+              <div className="text-zinc-300 text-center space-y-2">
                 <p>
                   <span className="font-semibold text-white">
                     Professional:

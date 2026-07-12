@@ -3,7 +3,14 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { useState } from "react";
-import { PenTool, Menu, X } from "lucide-react";
+import {
+  PenTool,
+  Menu,
+  X,
+  FolderGit2,
+  Briefcase,
+  Mail,
+} from "lucide-react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,22 +61,25 @@ export default function RootLayout({
             <div className="hidden md:flex gap-10 text-sm font-semibold tracking-wide">
               <Link
                 href="/projects"
-                className="hover:text-[#92a7b5] transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
               >
+                <FolderGit2 size={16} />
                 PROJECTS
               </Link>
 
               <Link
                 href="/practicum"
-                className="hover:text-[#92a7b5] transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
               >
+                <Briefcase size={16} />
                 PRACTICUM
               </Link>
 
               <Link
                 href="/contact"
-                className="hover:text-[#92a7b5] transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
               >
+                <Mail size={16} />
                 CONTACT
               </Link>
             </div>
@@ -87,25 +97,28 @@ export default function RootLayout({
             <div className="md:hidden flex flex-col items-center gap-6 pb-6 text-sm font-semibold tracking-wide bg-[#1f262b]">
               <Link
                 href="/projects"
-                className="hover:text-[#92a7b5] transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
                 onClick={() => setMenuOpen(false)}
               >
+                <FolderGit2 size={16} />
                 PROJECTS
               </Link>
 
               <Link
                 href="/practicum"
-                className="hover:text-[#92a7b5] transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
                 onClick={() => setMenuOpen(false)}
               >
+                <Briefcase size={16} />
                 PRACTICUM
               </Link>
 
               <Link
                 href="/contact"
-                className="hover:text-[#92a7b5] transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
                 onClick={() => setMenuOpen(false)}
               >
+                <Mail size={16} />
                 CONTACT
               </Link>
             </div>
