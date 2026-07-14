@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Rocket, Download, ScrollText, X } from "lucide-react";
+import { Rocket, FileText, ScrollText, X } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: -20 },
@@ -22,20 +22,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <main className="max-w-6xl mx-auto px-6 sm:px-8 md:px-16 py-12 sm:py-20 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
-        {/* Placeholder for photo */}
-        <motion.div
+        <motion.img
+          src="/Portfolio Pic.jpg"
+          alt="Lorenzo Okol"
           initial="hidden"
           animate="visible"
           custom={0.6}
           variants={fadeUp}
-          className="w-56 h-72 sm:w-72 sm:h-96 bg-zinc-700 rounded-lg flex items-center justify-center text-zinc-400 order-2 md:order-1"
-        >
-          Photo
-        </motion.div>
+          className="w-56 h-72 sm:w-72 sm:h-96 object-cover rounded-lg order-2 md:order-1"
+        />
 
-        {/* Intro Text */}
         <div className="flex flex-col gap-4 max-w-md text-center md:text-left items-center md:items-start order-1 md:order-2">
           <motion.h1
             initial="hidden"
@@ -67,10 +64,11 @@ export default function Home() {
           >
             <a
               href="/Resume-Okol_Lorenzo_T.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 bg-[#3d4e59] hover:bg-[#92a7b5] text-white px-5 py-2 rounded-md font-medium transition-colors duration-300"
             >
-              <Download size={18} />
+              <FileText size={18} />
               Download My Résumé
             </a>
 
@@ -85,7 +83,6 @@ export default function Home() {
         </div>
       </main>
 
-      {/* About Me Modal */}
       <AnimatePresence>
         {showAbout && (
           <motion.div
