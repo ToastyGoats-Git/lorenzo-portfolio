@@ -112,54 +112,57 @@ export default function Projects() {
   };
 
   return (
-    <div className="min-h-screen px-6 sm:px-8 md:px-16 py-12 sm:py-20 text-center">
-      <h1 className="text-4xl font-bold mb-4">PROJECTS</h1>
+    <div className="min-h-screen px-4 sm:px-8 md:px-16 py-12 sm:py-20 text-center">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-4">PROJECTS</h1>
 
       <div className="w-24 h-px bg-white/40 mx-auto mb-12"></div>
 
-      <div className="relative max-w-3xl mx-auto">
+      {/* Carousel: buttons sit inline on mobile, float outside the card from sm up */}
+      <div className="relative max-w-3xl mx-auto flex items-center gap-2 sm:gap-0">
         <button
           onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors"
+          className="shrink-0 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors sm:absolute sm:left-0 sm:top-1/2 sm:-translate-y-1/2 sm:-translate-x-12 md:-translate-x-16 z-10"
           aria-label="Previous project"
         >
           <ChevronLeft size={24} />
         </button>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.3 }}
-            onClick={() => {
-              setSelectedProject(index);
-              setImageIndex(0);
-            }}
-            className="cursor-pointer bg-[#1f262b] hover:bg-[#252e35] transition-all duration-300 hover:scale-[1.02] rounded-lg p-10 flex flex-col items-center justify-center gap-4 min-h-[280px]"
-          >
-            <div className="w-14 h-14 rounded-full bg-[#3d4e59] flex items-center justify-center">
-              <FolderGit2 size={26} className="text-[#92a7b5]" />
-            </div>
+        <div className="flex-1 min-w-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => {
+                setSelectedProject(index);
+                setImageIndex(0);
+              }}
+              className="cursor-pointer bg-[#1f262b] hover:bg-[#252e35] transition-all duration-300 hover:scale-[1.02] rounded-lg p-6 sm:p-10 flex flex-col items-center justify-center gap-4 min-h-[240px] sm:min-h-[280px]"
+            >
+              <div className="w-14 h-14 rounded-full bg-[#3d4e59] flex items-center justify-center">
+                <FolderGit2 size={26} className="text-[#92a7b5]" />
+              </div>
 
-            <h2 className="text-2xl font-bold">
-              {projects[index].title}
-            </h2>
+              <h2 className="text-xl sm:text-2xl font-bold">
+                {projects[index].title}
+              </h2>
 
-            <p className="text-zinc-300 max-w-md">
-              {projects[index].description}
-            </p>
+              <p className="text-zinc-300 max-w-md text-sm sm:text-base">
+                {projects[index].description}
+              </p>
 
-            <p className="text-sm text-[#92a7b5] mt-2">
-              Click to view more
-            </p>
-          </motion.div>
-        </AnimatePresence>
+              <p className="text-sm text-[#92a7b5] mt-2">
+                Click to view more
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         <button
           onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors"
+          className="shrink-0 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors sm:absolute sm:right-0 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-12 md:translate-x-16 z-10"
           aria-label="Next project"
         >
           <ChevronRight size={24} />
@@ -185,7 +188,7 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject !== null && (
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-3 sm:px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -195,27 +198,27 @@ export default function Projects() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
               transition={{ duration: 0.25 }}
-              className="relative bg-[#1f262b] rounded-xl p-8 max-w-3xl w-full"
+              className="relative bg-[#1f262b] rounded-xl p-5 sm:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-5 right-5"
+                className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1 rounded-full bg-[#3d4e59]/60 hover:bg-[#92a7b5] transition-colors"
                 aria-label="Close project"
               >
-                <X />
+                <X size={20} />
               </button>
 
-              <h2 className="text-3xl font-bold mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 pr-8">
                 {projects[selectedProject].title}
               </h2>
 
-              <div className="relative flex items-center justify-center mb-8">
+              <div className="relative flex items-center justify-center gap-2 mb-6 sm:mb-8">
                 <button
                   onClick={prevImage}
-                  className="absolute left-0 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors"
+                  className="shrink-0 p-1.5 sm:p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors z-10"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft />
+                  <ChevronLeft size={20} />
                 </button>
 
                 <img
@@ -223,19 +226,19 @@ export default function Projects() {
                   alt={`${projects[selectedProject].title} screenshot ${
                     imageIndex + 1
                   }`}
-                  className="rounded-lg w-full max-w-xl h-72 object-cover"
+                  className="rounded-lg w-full max-w-xl h-48 sm:h-72 object-cover"
                 />
 
                 <button
                   onClick={nextImage}
-                  className="absolute right-0 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors"
+                  className="shrink-0 p-1.5 sm:p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors z-10"
                   aria-label="Next image"
                 >
-                  <ChevronRight />
+                  <ChevronRight size={20} />
                 </button>
               </div>
 
-              <div className="flex justify-center gap-2 mb-8">
+              <div className="flex justify-center gap-2 mb-6 sm:mb-8">
                 {projects[selectedProject].images.map((_, i) => (
                   <button
                     key={i}
@@ -250,20 +253,20 @@ export default function Projects() {
                 ))}
               </div>
 
-              <p className="text-zinc-300 leading-relaxed mb-8">
+              <p className="text-zinc-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
                 {projects[selectedProject].description}
               </p>
 
               <div>
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-lg sm:text-xl font-semibold mb-4">
                   Technologies Used
                 </h3>
 
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                   {projects[selectedProject].technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-4 py-2 rounded-full bg-[#3d4e59] text-sm"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#3d4e59] text-xs sm:text-sm"
                     >
                       {tech}
                     </span>
