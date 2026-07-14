@@ -18,13 +18,13 @@ const fadeUp = {
 
 export default function Contact() {
   return (
-    <div className="min-h-screen px-16 py-20 text-center">
+    <div className="min-h-screen px-6 sm:px-8 md:px-16 py-12 sm:py-20 text-center">
       <motion.h1
         initial="hidden"
         animate="visible"
         custom={0}
         variants={fadeUp}
-        className="text-4xl font-bold mb-4"
+        className="text-3xl sm:text-4xl font-bold mb-4"
       >
         CONTACT ME
       </motion.h1>
@@ -46,12 +46,11 @@ export default function Contact() {
         animate="visible"
         custom={0.3}
         variants={fadeUp}
-        className="text-zinc-300 max-w-xl mx-auto mb-10 leading-relaxed"
+        className="text-zinc-300 max-w-xl mx-auto mb-10 leading-relaxed text-sm sm:text-base"
       >
-        I'd love to hear from you! Whether you have a question, an
-        opportunity, or just want to connect, feel free to reach out.
-        I'm always open to conversations and I'll do my best to get back to you
-        as soon as I can.
+        I'd love to hear from you! Whether you have a question, an opportunity,
+        or just want to connect, feel free to reach out. I'm always open to
+        conversations and I'll do my best to get back to you as soon as I can.
       </motion.p>
 
       <motion.div
