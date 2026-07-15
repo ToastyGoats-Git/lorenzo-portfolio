@@ -22,14 +22,14 @@ const projects = [
     ],
   },
   {
-    title: "Project Two",
+    title: "TicketingBros",
     description:
-      "Placeholder description for Project Two. This will contain the overview and key features of the project.",
-    technologies: ["Placeholder", "Placeholder", "Placeholder"],
+      "A web-based movie ticketing system built using ASP.NET Web Forms and C# with an MS Access database. The system handles seat selection, checkout, payment detail capture, and booking confirmation, with client- and server-side validation and duplicate-booking prevention.",
+    technologies: ["ASP.NET", "C#", "MS Access", "JavaScript"],
     images: [
-      "/placeholder.png",
-      "/placeholder.png",
-      "/placeholder.png",
+      "/TicketingBros 1.png",
+      "/TicketingBros 2.png",
+      "/TicketingBros 3.png",
     ],
   },
   {
@@ -44,14 +44,14 @@ const projects = [
     ],
   },
   {
-    title: "Project Four",
+    title: "PlanterAid",
     description:
-      "Placeholder description for Project Four. This will contain the overview and key features of the project.",
-    technologies: ["Placeholder", "Placeholder", "Placeholder"],
+      "An IoT-integrated web-based multi-zone farm monitoring system built for Promised Land Farm's pineapple fields in Santo Tomas, Batangas. The system tracks soil moisture, temperature, humidity, and GPS-mapped zones in real time, delivering SMS alerts and actionable recommendations through an interactive dashboard.",
+    technologies: [".NET Blazor", "MySQL", "Rest API", "SmarterASP.NET"],
     images: [
-      "/placeholder.png",
-      "/placeholder.png",
-      "/placeholder.png",
+      "/PlanterAid 1.png",
+      "/PlanterAid 2.png",
+      "/PlanterAid 3.png",
     ],
   },
 ];
@@ -117,8 +117,9 @@ export default function Projects() {
 
       <div className="w-24 h-px bg-white/40 mx-auto mb-12"></div>
 
-      {/* Carousel: buttons sit inline on mobile, float outside the card from sm up */}
-      <div className="relative max-w-3xl mx-auto flex items-center gap-2 sm:gap-0">
+      {/* Carousel: buttons sit inline on mobile, float outside the card from sm up.
+         Width grows at md/lg only, so mobile layout is untouched. */}
+      <div className="relative max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto flex items-center gap-2 sm:gap-0">
         <button
           onClick={prev}
           className="shrink-0 p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors sm:absolute sm:left-0 sm:top-1/2 sm:-translate-y-1/2 sm:-translate-x-12 md:-translate-x-16 z-10"
@@ -139,21 +140,29 @@ export default function Projects() {
                 setSelectedProject(index);
                 setImageIndex(0);
               }}
-              className="cursor-pointer bg-[#1f262b] hover:bg-[#252e35] transition-all duration-300 hover:scale-[1.02] rounded-lg p-6 sm:p-10 flex flex-col items-center justify-center gap-4 min-h-[240px] sm:min-h-[280px]"
+              className="group relative overflow-hidden cursor-pointer bg-[#1f262b] hover:bg-[#252e35] transition-colors duration-300 rounded-lg p-6 sm:p-10 lg:p-14 flex flex-col items-center justify-center gap-4 min-h-[240px] sm:min-h-[280px] lg:min-h-[340px]"
             >
-              <div className="w-14 h-14 rounded-full bg-[#3d4e59] flex items-center justify-center">
-                <FolderGit2 size={26} className="text-[#92a7b5]" />
+              {/* Blurred preview image, fades in on hover (desktop only, no effect on touch) */}
+              <div
+                className="pointer-events-none absolute inset-0 bg-cover bg-center scale-110 opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-40"
+                style={{ backgroundImage: `url('${projects[index].images[0]}')` }}
+              />
+              {/* Dark overlay to keep text legible over the preview */}
+              <div className="pointer-events-none absolute inset-0 bg-[#1f262b]/60 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <div className="relative z-10 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#3d4e59] flex items-center justify-center">
+                <FolderGit2 size={26} className="text-[#92a7b5] lg:w-8 lg:h-8" />
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-bold">
+              <h2 className="relative z-10 text-xl sm:text-2xl lg:text-3xl font-bold">
                 {projects[index].title}
               </h2>
 
-              <p className="text-zinc-300 max-w-md text-sm sm:text-base">
+              <p className="relative z-10 text-zinc-300 max-w-md lg:max-w-lg text-sm sm:text-base lg:text-lg">
                 {projects[index].description}
               </p>
 
-              <p className="text-sm text-[#92a7b5] mt-2">
+              <p className="relative z-10 text-sm text-[#92a7b5] mt-2">
                 Click to view more
               </p>
             </motion.div>
@@ -188,89 +197,107 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject !== null && (
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-3 sm:px-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 px-3 sm:px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 30 }}
+              initial={{ scale: 0.96, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 30 }}
-              transition={{ duration: 0.25 }}
-              className="relative bg-[#1f262b] rounded-xl p-5 sm:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              exit={{ scale: 0.96, opacity: 0, y: 20 }}
+              transition={{ duration: 0.2 }}
+              className="relative bg-[#171d21] border border-white/10 rounded-sm p-0 max-w-3xl w-full max-h-[90vh] overflow-y-auto text-left"
             >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1 rounded-full bg-[#3d4e59]/60 hover:bg-[#92a7b5] transition-colors"
-                aria-label="Close project"
-              >
-                <X size={20} />
-              </button>
-
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 pr-8">
-                {projects[selectedProject].title}
-              </h2>
-
-              <div className="relative flex items-center justify-center gap-2 mb-6 sm:mb-8">
-                <button
-                  onClick={prevImage}
-                  className="shrink-0 p-1.5 sm:p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors z-10"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-
-                <img
-                  src={projects[selectedProject].images[imageIndex]}
-                  alt={`${projects[selectedProject].title} screenshot ${
-                    imageIndex + 1
-                  }`}
-                  className="rounded-lg w-full max-w-xl h-48 sm:h-72 object-cover"
-                />
+              {/* Header bar: title left, close button right, hairline divider below */}
+              <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-white/10">
+                <h2 className="text-lg sm:text-xl font-bold tracking-tight">
+                  {projects[selectedProject].title}
+                </h2>
 
                 <button
-                  onClick={nextImage}
-                  className="shrink-0 p-1.5 sm:p-2 rounded-full bg-[#3d4e59] hover:bg-[#92a7b5] transition-colors z-10"
-                  aria-label="Next image"
+                  onClick={() => setSelectedProject(null)}
+                  className="p-1 text-white/60 hover:text-white transition-colors"
+                  aria-label="Close project"
                 >
-                  <ChevronRight size={20} />
+                  <X size={18} />
                 </button>
               </div>
 
-              <div className="flex justify-center gap-2 mb-6 sm:mb-8">
-                {projects[selectedProject].images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setImageIndex(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      i === imageIndex
-                        ? "bg-[#92a7b5]"
-                        : "bg-white/20"
+              <div className="p-5 sm:p-7">
+                {/* Hero screenshot, sharp corners, thin border */}
+                <div className="border border-white/10">
+                  <img
+                    src={projects[selectedProject].images[imageIndex]}
+                    alt={`${projects[selectedProject].title} screenshot ${
+                      imageIndex + 1
                     }`}
-                    aria-label={`Go to image ${i + 1}`}
+                    className="w-full aspect-video object-cover"
                   />
-                ))}
-              </div>
+                </div>
 
-              <p className="text-zinc-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-                {projects[selectedProject].description}
-              </p>
-
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-4">
-                  Technologies Used
-                </h3>
-
-                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-                  {projects[selectedProject].technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#3d4e59] text-xs sm:text-sm"
+                {/* Filmstrip: tight gaps, square corners, active thumb outlined */}
+                <div className="flex gap-1 mt-1.5">
+                  {projects[selectedProject].images.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setImageIndex(i)}
+                      className={`relative flex-1 aspect-video overflow-hidden border transition-colors ${
+                        i === imageIndex
+                          ? "border-[#66c0f4]"
+                          : "border-transparent opacity-60 hover:opacity-100"
+                      }`}
+                      aria-label={`Go to image ${i + 1}`}
                     >
-                      {tech}
-                    </span>
+                      <img
+                        src={img}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
                   ))}
+                </div>
+
+                <div className="flex items-center justify-end gap-3 mt-2 text-xs text-white/50">
+                  <button
+                    onClick={prevImage}
+                    className="hover:text-white transition-colors"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                  <span>
+                    {imageIndex + 1} / {projects[selectedProject].images.length}
+                  </span>
+                  <button
+                    onClick={nextImage}
+                    className="hover:text-white transition-colors"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+
+                {/* Left-aligned info block, hairline divider above tags */}
+                <p className="text-white/70 leading-relaxed text-sm mt-6">
+                  {projects[selectedProject].description}
+                </p>
+
+                <div className="border-t border-white/10 mt-6 pt-5">
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-white/40 mb-3">
+                    Technologies Used
+                  </h3>
+
+                  <div className="flex flex-wrap gap-2">
+                    {projects[selectedProject].technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 bg-white/5 border border-white/10 text-xs text-white/70"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
