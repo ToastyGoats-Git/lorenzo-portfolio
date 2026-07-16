@@ -9,6 +9,7 @@ import {
   X,
   FolderGit2,
   Briefcase,
+  Award,
   Mail,
 } from "lucide-react";
 import "./globals.css";
@@ -77,6 +78,14 @@ export default function RootLayout({
               </Link>
 
               <Link
+                href="/credentials"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
+              >
+                <Award size={16} />
+                CREDENTIALS
+              </Link>
+
+              <Link
                 href="/contact"
                 className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
               >
@@ -112,6 +121,15 @@ export default function RootLayout({
               >
                 <Briefcase size={16} />
                 PRACTICUM
+              </Link>
+
+              <Link
+                href="/credentials"
+                className="flex items-center gap-2 hover:text-[#92a7b5] transition-colors duration-300"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Award size={16} />
+                CREDENTIALS
               </Link>
 
               <Link
