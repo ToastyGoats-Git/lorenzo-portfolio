@@ -15,6 +15,7 @@ const projects = [
     description:
       "A desktop puzzle word game in Python using Tkinter, inspired by the popular mobile game 4 Pics 1 Word.",
     technologies: ["Python", "Tkinter"],
+    orientation: "landscape",
     images: [
       "/4pic1word 1.png",
       "/4pic1word 2.png",
@@ -26,6 +27,7 @@ const projects = [
     description:
       "A web-based movie ticketing system built using ASP.NET Web Forms and C# with an MS Access database. The system handles seat selection, checkout, payment detail capture, and booking confirmation, with client- and server-side validation and duplicate-booking prevention.",
     technologies: ["ASP.NET", "C#", "MS Access", "JavaScript"],
+    orientation: "landscape",
     images: [
       "/TicketingBros 1.png",
       "/TicketingBros 2.png",
@@ -33,14 +35,15 @@ const projects = [
     ],
   },
   {
-    title: "Project Three",
+    title: "Arithmetic Arena",
     description:
-      "Placeholder description for Project Three. This will contain the overview and key features of the project.",
-    technologies: ["Placeholder", "Placeholder", "Placeholder"],
+      "A math-based battle RPG for Android where solving arithmetic problems powers your combat. Built with Kotlin and Jetpack Compose, backed by a custom PHP/MySQL API for accounts, progression, and leaderboards.",
+    technologies: ["Kotlin", "Jetpack Compose", "PHP", "MySQL"],
+    orientation: "portrait",
     images: [
-      "/placeholder.png",
-      "/placeholder.png",
-      "/placeholder.png",
+      "/Arithmetic 1.jpg",
+      "/Arithmetic 2.jpg",
+      "/Arithmetic 3.jpg",
     ],
   },
   {
@@ -48,6 +51,7 @@ const projects = [
     description:
       "An IoT-integrated web-based multi-zone farm monitoring system built for Promised Land Farm's pineapple fields in Santo Tomas, Batangas. The system tracks soil moisture, temperature, humidity, and GPS-mapped zones in real time, delivering SMS alerts and actionable recommendations through an interactive dashboard.",
     technologies: [".NET Blazor", "MySQL", "Rest API", "SmarterASP.NET"],
+    orientation: "landscape",
     images: [
       "/PlanterAid 1.png",
       "/PlanterAid 2.png",
@@ -110,6 +114,10 @@ export default function Projects() {
         projects[selectedProject].images.length
     );
   };
+
+  const isPortrait =
+    selectedProject !== null &&
+    projects[selectedProject].orientation === "portrait";
 
   return (
     <div className="min-h-screen px-4 sm:px-8 md:px-16 py-12 sm:py-20 text-center">
@@ -225,24 +233,42 @@ export default function Projects() {
               </div>
 
               <div className="p-5 sm:p-7">
-                {/* Hero screenshot, sharp corners, thin border */}
-                <div className="border border-white/10">
-                  <img
-                    src={projects[selectedProject].images[imageIndex]}
-                    alt={`${projects[selectedProject].title} screenshot ${
-                      imageIndex + 1
-                    }`}
-                    className="w-full aspect-video object-cover"
-                  />
-                </div>
+                {/* Hero screenshot. Portrait (phone) projects get a capped-height
+                   contain box centered on a dark backdrop; landscape (desktop/web)
+                   projects keep the original 16:9 crop. */}
+                {isPortrait ? (
+                  <div className="border border-white/10 bg-black/30 flex items-center justify-center h-[420px] sm:h-[480px]">
+                    <img
+                      src={projects[selectedProject].images[imageIndex]}
+                      alt={`${projects[selectedProject].title} screenshot ${
+                        imageIndex + 1
+                      }`}
+                      className="h-full w-auto object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="border border-white/10">
+                    <img
+                      src={projects[selectedProject].images[imageIndex]}
+                      alt={`${projects[selectedProject].title} screenshot ${
+                        imageIndex + 1
+                      }`}
+                      className="w-full aspect-video object-cover"
+                    />
+                  </div>
+                )}
 
-                {/* Filmstrip: tight gaps, square corners, active thumb outlined */}
+                {/* Filmstrip: tight gaps, square corners, active thumb outlined.
+                   Portrait projects use taller 9/16 thumbs so the phone shots
+                   aren't cropped down to a sliver. */}
                 <div className="flex gap-1 mt-1.5">
                   {projects[selectedProject].images.map((img, i) => (
                     <button
                       key={i}
                       onClick={() => setImageIndex(i)}
-                      className={`relative flex-1 aspect-video overflow-hidden border transition-colors ${
+                      className={`relative flex-1 overflow-hidden border transition-colors ${
+                        isPortrait ? "aspect-[9/16]" : "aspect-video"
+                      } ${
                         i === imageIndex
                           ? "border-[#66c0f4]"
                           : "border-transparent opacity-60 hover:opacity-100"
@@ -252,7 +278,9 @@ export default function Projects() {
                       <img
                         src={img}
                         alt=""
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full ${
+                          isPortrait ? "object-contain bg-black/30" : "object-cover"
+                        }`}
                       />
                     </button>
                   ))}
